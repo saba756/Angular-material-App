@@ -65,10 +65,10 @@ tr.example-element-row:not(.example-expanded-row):active {
   gap: 13px;
 }
 .inner-Table {
-  display: grid;
+  /* display: grid; */
 }
 .inner-Table-rows {
-  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: repeat(4, 1fr); */
 }
 .inner-div {
   display: grid;

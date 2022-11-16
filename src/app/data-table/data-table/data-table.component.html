@@ -93,15 +93,43 @@
         class="example-element-detail"
         [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
       >
-        <!-- <div>&nbsp;</div>
-        <div>&nbsp;</div> -->
-        <div *ngFor="let column of ELEMENT" class="inner-div">
+        <!-- <div *ngFor="let column of ELEMENT" class="inner-div">
           <div>{{ column.income }}</div>
           <div>{{ column.userAssessment }}</div>
           <div>{{ column.monAssessment }}</div>
 
           <div>{{ column.Decision }}</div>
-        </div>
+        </div> -->
+        <table class="inner-Table">
+          <colgroup>
+            <col width="13%" />
+            <col width="20%" />
+            <col width="30%" />
+            <col width="16%" />
+          </colgroup>
+
+          <tr>
+            <td class="">&nbsp;</td>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+            <td>Uk</td>
+          </tr>
+          <tr>
+            <td class="">&nbsp;</td>
+            <td>Berglunds snabbköp</td>
+            <td>Christina Berglund</td>
+            <td>Sweden</td>
+            <td>Uk</td>
+          </tr>
+          <tr>
+            <td class="">&nbsp;</td>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+            <td>Uk</td>
+          </tr>
+        </table>
       </div>
     </td>
   </ng-container>

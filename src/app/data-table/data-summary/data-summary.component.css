@@ -1,0 +1,12 @@
+.summary-header {
+  display: flex;
+  gap: 9px;
+}
+.summary-icon {
+  margin-top: 4px;
+}
+.summary-text {
+  line-height: 19px;
+  color: #2d3d9a;
+}
+

@@ -13,8 +13,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialExampleModule } from './material.module';
+import { DataSummaryComponent } from './data-table/data-summary/data-summary.component';
 @NgModule({
-  declarations: [AppComponent, DataTableComponent],
+  declarations: [AppComponent, DataTableComponent, DataSummaryComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
