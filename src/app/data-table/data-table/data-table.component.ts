@@ -24,111 +24,158 @@ import {
 })
 export class DataTableComponent {
   constructor() {}
-
+  isExpanded: boolean = false;
+  expandFunc(element: any) {
+    console.log(element);
+    this.isExpanded = true;
+  }
   dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['MonthioAssessment', 'weight', 'symbol'];
-  columnsToDisplayWithExpand = ['expand', 'income', ...this.columnsToDisplay];
+  columnsToDisplay = ['income', 'weight', 'symbol', 'position'];
+  columnsToDisplayWithExpand = ['expand', ...this.columnsToDisplay];
   expandedElement: PeriodicElement | null | undefined;
-  ELEMENT = [
+  INNER_TABLE_DATA = [
     {
-      income: 'Salary',
-      monAssessment: '14.07kr.',
-      userAssessment: '14.07kr.',
-      Decision: '14.07kr.',
+      salary: 'Salary',
+      monthio_Assessment: '14.027Kr',
+      user_Assessment: '14.027Kr',
+      decision: '14027',
     },
     {
-      income: 'Salary',
-      monAssessment: '14.07kr.',
-      userAssessment: '14.07kr.',
-      Decision: '14.07kr.',
+      salary: 'Bonus & gross income',
+      monthio_Assessment: '0Kr',
+      user_Assessment: '0Kr',
+      decision: '0',
     },
     {
-      income: 'Bonus & gross income',
-      monAssessment: '0kr.',
-      userAssessment: '0kr.',
-      Decision: '0kr.',
-    },
-    {
-      income: 'Salary',
-      monAssessment: '14.07kr.',
-      userAssessment: '0kr.',
-      Decision: '14.07kr.',
-    },
-    {
-      income: 'Salary',
-      monAssessment: '14.07kr.',
-      userAssessment: '14.07kr.',
-      Decision: '14.07kr.',
+      salary: 'Bonus & gross income',
+      monthio_Assessment: '0Kr',
+      user_Assessment: '0Kr',
+      decision: '0',
     },
   ];
 }
-
 export interface PeriodicElement {
-  MonthioAssessment: string;
-  weight: string;
-  symbol: string;
   income: string;
+  position: number;
+  weight: number;
+  symbol: string;
+  description: string;
 }
+export interface innerTable {
+  salary: string;
+  monthio_Assessment: string;
+  user_Assessment: string;
+  decision: string;
+}
+
+const INNER_TABLE_DATA: innerTable[] = [
+  {
+    salary: 'Salary',
+    monthio_Assessment: '14.027Kr',
+    user_Assessment: '14.027Kr',
+    decision: '14027',
+  },
+  {
+    salary: 'Bonus & gross income',
+    monthio_Assessment: '0Kr',
+    user_Assessment: '0Kr',
+    decision: '0',
+  },
+  {
+    salary: 'Bonus & gross income',
+    monthio_Assessment: '0Kr',
+    user_Assessment: '0Kr',
+    decision: '0',
+  },
+];
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {
-    MonthioAssessment: '14.027 kr.',
-    weight: '14.027 kr.',
+    position: 14.027,
+    income: 'Total income after tax',
+    weight: 14.027,
     symbol: '14.027 kr.',
-    income: 'Total income after tax',
+    description: `Hydrogen is a chemical element with symbol H and atomic number 1. With a standard
+        atomic weight of 1.008, hydrogen is the lightest element on the periodic table.`,
   },
   {
-    MonthioAssessment: 'Helium',
-    weight: '14.027 kr.',
-    symbol: 'He',
+    position: 2,
     income: 'Total income after tax',
+    weight: 4.0026,
+    symbol: '14.027 kr.',
+    description: `Helium is a chemical element with symbol He and atomic number 2. It is a
+        colorless, odorless, tasteless, non-toxic, inert, monatomic gas, the first in the noble gas
+        group in the periodic table. Its boiling point is the lowest among all the elements.`,
   },
   {
-    MonthioAssessment: 'Lithium',
-    weight: '14.027 kr.',
-    symbol: 'Li',
+    position: 3,
     income: 'Total income after tax',
+    weight: 6.941,
+    symbol: '14.027 kr.',
+    description: `Lithium is a chemical element with symbol Li and atomic number 3. It is a soft,
+        silvery-white alkali metal. Under standard conditions, it is the lightest metal and the
+        lightest solid element.`,
   },
   {
-    MonthioAssessment: 'Beryllium',
-    weight: '14.027 kr.',
+    position: 4,
+    income: 'Total income after tax',
+    weight: 9.0122,
     symbol: 'Be',
-    income: 'Total income after tax',
+    description: `Beryllium is a chemical element with symbol Be and atomic number 4. It is a
+        relatively rare element in the universe, usually occurring as a product of the spallation of
+        larger atomic nuclei that have collided with cosmic rays.`,
   },
   {
-    MonthioAssessment: 'Boron',
-    weight: '14.027 kr.',
+    position: 5,
+    income: 'Total income after tax',
+    weight: 10.811,
     symbol: 'B',
-    income: 'Total income after tax',
+    description: `Boron is a chemical element with symbol B and atomic number 5. Produced entirely
+        by cosmic ray spallation and supernovae and not by stellar nucleosynthesis, it is a
+        low-abundance element in the Solar system and in the Earth's crust.`,
   },
   {
-    MonthioAssessment: 'Carbon',
-    weight: '14.027 kr.',
+    position: 6,
+    income: 'Total income after tax',
+    weight: 12.0107,
     symbol: 'C',
-    income: 'Total income after tax',
+    description: `Carbon is a chemical element with symbol C and atomic number 6. It is nonmetallic
+        and tetravalent—making four electrons available to form covalent chemical bonds. It belongs
+        to group 14 of the periodic table.`,
   },
   {
-    MonthioAssessment: 'Nitrogen',
-    weight: '14.027 kr.',
+    position: 7,
+    income: 'Total income after tax',
+    weight: 14.0067,
     symbol: 'N',
-    income: 'Total income after tax',
+    description: `Nitrogen is a chemical element with symbol N and atomic number 7. It was first
+        discovered and isolated by Scottish physician Daniel Rutherford in 1772.`,
   },
   {
-    MonthioAssessment: 'Oxygen',
-    weight: '14.027 kr.',
+    position: 8,
+    income: 'Total income after tax',
+    weight: 15.9994,
     symbol: 'O',
-    income: 'Total income after tax',
+    description: `Oxygen is a chemical element with symbol O and atomic number 8. It is a member of
+         the chalcogen group on the periodic table, a highly reactive nonmetal, and an oxidizing
+         agent that readily forms oxides with most elements as well as with other compounds.`,
   },
   {
-    MonthioAssessment: 'Fluorine',
-    weight: '14.027 kr.',
+    position: 9,
+    income: 'Total income after tax',
+    weight: 18.9984,
     symbol: 'F',
-    income: 'Total income after tax',
+    description: `Fluorine is a chemical element with symbol F and atomic number 9. It is the
+        lightest halogen and exists as a highly toxic pale yellow diatomic gas at standard
+        conditions.`,
   },
   {
-    MonthioAssessment: 'Neon',
-    weight: '14.027 kr.',
-    symbol: 'Ne',
+    position: 10,
     income: 'Total income after tax',
+    weight: 20.1797,
+    symbol: 'Ne',
+    description: `Neon is a chemical element with symbol Ne and atomic number 10. It is a noble gas.
+        Neon is a colorless, odorless, inert monatomic gas under standard conditions, with about
+        two-thirds the density of air.`,
   },
 ];

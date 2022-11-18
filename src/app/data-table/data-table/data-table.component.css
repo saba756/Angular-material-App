@@ -1,3 +1,8 @@
+.table-header {
+  background-color: #2d3d9a;
+  border-radius: 4px 4px 0px 0px;
+  width: 100%;
+}
 table {
   width: 100%;
 }
@@ -20,6 +25,7 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-detail {
   overflow: hidden;
+  display: flex;
 }
 
 .example-element-diagram {
@@ -44,33 +50,9 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-description-attribution {
   opacity: 0.5;
 }
-.table-header {
-  background-color: var(--dark-blue, #2d3d9a);
-  color: #fff;
-}
-.table-header-cell {
-  width: 10rem;
-}
-.inner-table-header-cell {
-  width: 9.5rem;
-}
-.td.mat-cell:first-of-type {
-  padding-left: 0px;
-}
-.income-body {
-  padding-right: 108px;
-}
-.income-data {
-  display: flex;
-  gap: 13px;
-}
-.inner-Table {
-  /* display: grid; */
-}
-.inner-Table-rows {
-  /* grid-template-columns: repeat(4, 1fr); */
-}
-.inner-div {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.input-text {
+  width: 80px;
+  height: 25px;
+  margin-left: -17px;
+  text-align: right;
 }
