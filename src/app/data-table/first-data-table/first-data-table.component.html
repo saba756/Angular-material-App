@@ -1,0 +1,65 @@
+<mat-card
+  ><div class="container">
+    <div class="summary-header">
+      <h3 class="text-color">Summary of changes to key numbers</h3>
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        class="sc-htJRVC iESmWC icon"
+        viewBox="0 0 32 32"
+      >
+        <path
+          fill="var(--light-grey, #E5E6EB)"
+          d="M31.5 16c0 8.56-6.939 15.499-15.499 15.499s-15.499-6.939-15.499-15.499c0-8.56 6.939-15.499 15.499-15.499s15.499 6.939 15.499 15.499z"
+        ></path>
+        <path
+          fill="var(--primary-darker)"
+          d="M17.108 12.113v12.283h-2.747v-12.283h2.747zM14.179 8.889c0-0.416 0.136-0.761 0.409-1.033 0.28-0.28 0.666-0.42 1.158-0.42 0.484 0 0.867 0.14 1.147 0.42 0.28 0.272 0.42 0.617 0.42 1.033 0 0.409-0.14 0.749-0.42 1.022s-0.662 0.409-1.147 0.409c-0.492 0-0.878-0.136-1.158-0.409-0.272-0.272-0.409-0.613-0.409-1.022z"
+        ></path>
+      </svg>
+    </div>
+
+    <!-- level 01 -->
+    <mat-accordion cdkDropList (cdkDropListDropped)="drop($event)">
+      <mat-expansion-panel
+        *ngFor="let panel of accordions"
+        cdkDrag
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+        [togglePosition]="'before'"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ panel.title }}</mat-panel-title>
+          <mat-panel-description>{{ panel.description }}</mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <ng-container *ngIf="panel.subAccordion" class="row-line">
+          <mat-expansion-panel
+            *ngFor="let subpanel of panel.subAccordion"
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+            [togglePosition]="'before'"
+            class="expansion-panel"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{ subpanel.title }}</mat-panel-title>
+              <mat-panel-description class="child-description">{{
+                subpanel.description
+              }}</mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="grand-child">
+              <mat-panel-title>{{ subpanel.content }}</mat-panel-title>
+              <mat-panel-description class="child-description"
+                >500</mat-panel-description
+              >
+            </div>
+
+            <!-- <p>{{ subpanel.content }}</p> -->
+          </mat-expansion-panel>
+        </ng-container>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</mat-card>

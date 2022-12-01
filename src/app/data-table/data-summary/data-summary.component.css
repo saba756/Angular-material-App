@@ -1,12 +1,51 @@
+table {
+  width: 100%;
+}
 .summary-header {
   display: flex;
-  gap: 9px;
 }
-.summary-icon {
+.icon {
   margin-top: 4px;
+  padding-left: 4px;
 }
-.summary-text {
-  line-height: 19px;
+.summary-card {
+  background-color: blue;
+}
+/* .summary-table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+/* .cell-icon {
+  padding-left: 15px !important;
+} */
+.td-cell-icon {
+  padding-left: 15px !important;
+}
+.income-name {
+  display: flex;
+}
+.income-icon {
+  padding-left: 6px;
+}
+.btn-icon {
+  color: #3f51b5;
+}
+.text-color {
   color: #2d3d9a;
 }
-
+@media only screen and (max-width: 1024px) {
+  .expand-icon-width {
+    width: 5%;
+  }
+}
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+tr.example-detail-row {
+  height: 0;
+}
+.inner-first-table {
+  height: 0;
+}

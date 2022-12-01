@@ -29,6 +29,10 @@ export class DataTableComponent {
     console.log(element);
     this.isExpanded = true;
   }
+  // expandFunc(element: any) {
+  //   console.log(element);
+  //   this.isExpanded = true;
+  // }
   dataSource = ELEMENT_DATA;
   columnsToDisplay = ['income', 'weight', 'symbol', 'position'];
   columnsToDisplayWithExpand = ['expand', ...this.columnsToDisplay];

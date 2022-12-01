@@ -14,8 +14,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialExampleModule } from './material.module';
 import { DataSummaryComponent } from './data-table/data-summary/data-summary.component';
+import { FirstDataTableComponent } from './data-table/first-data-table/first-data-table.component';
+
 @NgModule({
-  declarations: [AppComponent, DataTableComponent, DataSummaryComponent],
+  declarations: [
+    AppComponent,
+    DataTableComponent,
+    FirstDataTableComponent,
+    DataSummaryComponent,
+  ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -23,7 +30,7 @@ import { DataSummaryComponent } from './data-table/data-summary/data-summary.com
     HttpClientModule,
     MaterialExampleModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

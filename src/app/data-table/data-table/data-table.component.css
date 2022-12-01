@@ -7,6 +7,9 @@ table {
   width: 100%;
 }
 
+.mat-sort-header-container {
+  justify-content: center !important;
+}
 tr.example-detail-row {
   height: 0;
 }
@@ -64,4 +67,6 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 .inner-salary {
   display: flex;
+}
+.container {
 }

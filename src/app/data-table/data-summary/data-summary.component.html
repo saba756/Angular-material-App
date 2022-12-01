@@ -1,36 +1,175 @@
-<mat-card>
-  <!-- <mat-card-title>Actions Buttons</mat-card-title> -->
-  <div class="summary-header">
-    <h3 class="summary-text">Summary of changes to key numbers</h3>
-    <svg
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      class="sc-htJRVC iESmWC"
-      viewBox="0 0 32 32"
-    >
-      <path
-        fill="var(--light-grey, #E5E6EB)"
-        d="M31.5 16c0 8.56-6.939 15.499-15.499 15.499s-15.499-6.939-15.499-15.499c0-8.56 6.939-15.499 15.499-15.499s15.499 6.939 15.499 15.499z"
-      ></path>
-      <path
-        fill="var(--primary-darker)"
-        d="M17.108 12.113v12.283h-2.747v-12.283h2.747zM14.179 8.889c0-0.416 0.136-0.761 0.409-1.033 0.28-0.28 0.666-0.42 1.158-0.42 0.484 0 0.867 0.14 1.147 0.42 0.28 0.272 0.42 0.617 0.42 1.033 0 0.409-0.14 0.749-0.42 1.022s-0.662 0.409-1.147 0.409c-0.492 0-0.878-0.136-1.158-0.409-0.272-0.272-0.409-0.613-0.409-1.022z"
-      ></path>
-    </svg>
-  </div>
+<div class="summary-card">
+  <mat-card>
+    <!-- <mat-card-title>Actions Buttons</mat-card-title> -->
+    <div class="summary-header">
+      <h3 class="text-color">Summary of changes to key numbers</h3>
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        class="sc-htJRVC iESmWC icon"
+        viewBox="0 0 32 32"
+      >
+        <path
+          fill="var(--light-grey, #E5E6EB)"
+          d="M31.5 16c0 8.56-6.939 15.499-15.499 15.499s-15.499-6.939-15.499-15.499c0-8.56 6.939-15.499 15.499-15.499s15.499 6.939 15.499 15.499z"
+        ></path>
+        <path
+          fill="var(--primary-darker)"
+          d="M17.108 12.113v12.283h-2.747v-12.283h2.747zM14.179 8.889c0-0.416 0.136-0.761 0.409-1.033 0.28-0.28 0.666-0.42 1.158-0.42 0.484 0 0.867 0.14 1.147 0.42 0.28 0.272 0.42 0.617 0.42 1.033 0 0.409-0.14 0.749-0.42 1.022s-0.662 0.409-1.147 0.409c-0.492 0-0.878-0.136-1.158-0.409-0.272-0.272-0.409-0.613-0.409-1.022z"
+        ></path>
+      </svg>
+    </div>
 
-  <mat-expansion-panel
-    (opened)="panelOpenState = true"
-    (closed)="panelOpenState = false"
-  >
-    <mat-expansion-panel-header>
-      <mat-panel-description>
-        Currently I am {{ panelOpenState ? "open" : "closed" }}
-      </mat-panel-description>
-      <mat-panel-title> Self aware panel </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
-  </mat-expansion-panel>
-</mat-card>
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      multiTemplateDataRows
+      class="mat-elevation-z8"
+    >
+      <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+      <colgroup>
+        <col width="5%" />
+        <col width="55%" />
+        <col width="20%" />
+        <col width="20%" />
+      </colgroup>
+      <tbody>
+        <!-- Position Column -->
+        <ng-container matColumnDef="icon">
+          <td class="td-cell-icon" mat-cell *matCellDef="let element">
+            <button class="btn-icon" mat-icon-button aria-label="expand row">
+              <mat-icon *ngIf="expandedElement !== element"
+                >keyboard_arrow_down</mat-icon
+              >
+              <mat-icon *ngIf="expandedElement === element"
+                >keyboard_arrow_up</mat-icon
+              >
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="expandedDetail">
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [attr.colspan]="displayedColumns.length"
+          >
+            <div
+              class="example-element-detail"
+              [@detailExpand]="
+                element == expandedElement ? 'expanded' : 'collapsed'
+              "
+            >
+              <span>hello</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <td mat-cell *matCellDef="let element">
+            <div class="income-name">
+              <span> {{ element.name }}</span>
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                class="sc-dUbtfd gjMpKO income-icon"
+                viewBox="0 0 32 32"
+              >
+                <path
+                  fill="var(--light-grey, #E5E6EB)"
+                  d="M31.5 16c0 8.56-6.939 15.499-15.499 15.499s-15.499-6.939-15.499-15.499c0-8.56 6.939-15.499 15.499-15.499s15.499 6.939 15.499 15.499z"
+                ></path>
+                <path
+                  fill="var(--inactive, #46464650)"
+                  d="M17.361 19.526h-2.531c0.008-0.704 0.068-1.294 0.182-1.771 0.114-0.484 0.303-0.923 0.568-1.317 0.272-0.394 0.632-0.81 1.079-1.249 0.348-0.333 0.662-0.647 0.942-0.942 0.28-0.303 0.503-0.621 0.67-0.954 0.166-0.341 0.25-0.73 0.25-1.169 0-0.477-0.079-0.882-0.238-1.215s-0.394-0.587-0.704-0.761c-0.303-0.174-0.681-0.261-1.135-0.261-0.378 0-0.734 0.076-1.067 0.227-0.333 0.144-0.602 0.371-0.806 0.681-0.204 0.303-0.314 0.704-0.329 1.203h-2.736c0.015-0.954 0.242-1.756 0.681-2.407s1.029-1.139 1.771-1.464c0.742-0.325 1.57-0.488 2.486-0.488 1.014 0 1.881 0.174 2.6 0.522 0.719 0.341 1.268 0.84 1.646 1.498 0.386 0.651 0.579 1.438 0.579 2.361 0 0.666-0.133 1.271-0.397 1.816-0.265 0.537-0.609 1.041-1.033 1.51-0.424 0.462-0.882 0.923-1.374 1.385-0.424 0.386-0.711 0.806-0.863 1.26-0.151 0.447-0.231 0.957-0.238 1.532zM14.603 23.067c0-0.409 0.14-0.753 0.42-1.033 0.28-0.288 0.662-0.431 1.147-0.431s0.867 0.144 1.147 0.431c0.28 0.28 0.42 0.624 0.42 1.033s-0.14 0.757-0.42 1.044c-0.28 0.28-0.662 0.42-1.147 0.42s-0.867-0.14-1.147-0.42c-0.28-0.288-0.42-0.636-0.42-1.044z"
+                ></path>
+              </svg>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Space -->
+        <ng-container matColumnDef="space">
+          <td mat-cell *matCellDef="let element">&nbsp;</td>
+        </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef>Weight</th>
+          <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+        </ng-container>
+        <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+        <tr
+          mat-row
+          *matRowDef="let element; columns: displayedColumns"
+          [class.example-expanded-row]="expandedElement === element"
+          (click)="
+            expandedElement = expandedElement === element ? null : element
+          "
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: ['expandedDetail']"
+          class="example-detail-row"
+        ></tr>
+      </tbody>
+    </table>
+
+    <table class="inner-first-table">
+      <colgroup>
+        <col width="4%" />
+        <col width="30%" />
+        <col width="22%" />
+        <col width="22%" />
+        <col width="22%" />
+      </colgroup>
+      <tr *ngFor="let column of INNER_TABLE_DATA">
+        <td>&nbsp;</td>
+        <div class="inner-salary">
+          <span style="margin-left: -7px">
+            <td>{{ column.salary }}</td>
+          </span>
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            class="sc-dUbtfd gjMpKO info-icon"
+            viewBox="0 0 32 32"
+          >
+            <path
+              fill="var(--light-grey, #E5E6EB)"
+              d="M31.5 16c0 8.56-6.939 15.499-15.499 15.499s-15.499-6.939-15.499-15.499c0-8.56 6.939-15.499 15.499-15.499s15.499 6.939 15.499 15.499z"
+            ></path>
+            <path
+              fill="var(--inactive, #46464650)"
+              d="M17.361 19.526h-2.531c0.008-0.704 0.068-1.294 0.182-1.771 0.114-0.484 0.303-0.923 0.568-1.317 0.272-0.394 0.632-0.81 1.079-1.249 0.348-0.333 0.662-0.647 0.942-0.942 0.28-0.303 0.503-0.621 0.67-0.954 0.166-0.341 0.25-0.73 0.25-1.169 0-0.477-0.079-0.882-0.238-1.215s-0.394-0.587-0.704-0.761c-0.303-0.174-0.681-0.261-1.135-0.261-0.378 0-0.734 0.076-1.067 0.227-0.333 0.144-0.602 0.371-0.806 0.681-0.204 0.303-0.314 0.704-0.329 1.203h-2.736c0.015-0.954 0.242-1.756 0.681-2.407s1.029-1.139 1.771-1.464c0.742-0.325 1.57-0.488 2.486-0.488 1.014 0 1.881 0.174 2.6 0.522 0.719 0.341 1.268 0.84 1.646 1.498 0.386 0.651 0.579 1.438 0.579 2.361 0 0.666-0.133 1.271-0.397 1.816-0.265 0.537-0.609 1.041-1.033 1.51-0.424 0.462-0.882 0.923-1.374 1.385-0.424 0.386-0.711 0.806-0.863 1.26-0.151 0.447-0.231 0.957-0.238 1.532zM14.603 23.067c0-0.409 0.14-0.753 0.42-1.033 0.28-0.288 0.662-0.431 1.147-0.431s0.867 0.144 1.147 0.431c0.28 0.28 0.42 0.624 0.42 1.033s-0.14 0.757-0.42 1.044c-0.28 0.28-0.662 0.42-1.147 0.42s-0.867-0.14-1.147-0.42c-0.28-0.288-0.42-0.636-0.42-1.044z"
+            ></path>
+          </svg>
+        </div>
+
+        <td>
+          <span style="margin-left: -7px">
+            {{ column.monthio_Assessment }}
+          </span>
+        </td>
+        <td>{{ column.user_Assessment }}</td>
+        <td>
+          <div style="width: 40px">
+            <input
+              class="input-text"
+              type="number"
+              disabled
+              value="{{ column.decision }}"
+            />
+          </div>
+        </td>
+      </tr>
+    </table>
+  </mat-card>
+</div>
